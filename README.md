@@ -1,3 +1,19 @@
+# Notes from 3 Sep 2021
+Since Pairist is very tightly coupled with Firebase services, it is not possible to do a straight forward deployment in our infrastructure.
+Even if we tried to do so, basic Firebase plans do not encompass the usage of `functions`, which means we'd have to upgrade to a payed tier.
+
+We have forked the repo to the vwds organization and not our SDC:LX one due to the visibility of forks 🍴.
+Details for the Firebase/Google access can be found in 1Password's shared vault under "SDC Firebase" entry.
+
+# Next Steps
+
+- Investigate https://aws.amazon.com/amplify/ as a replacement for Firebase services
+
+If it is not a viable option, then:
+- Create a service account in firebase
+- Configure a AWS account
+
+
 # 👥 Pairist
 
 Pairist is a web app for teams that pair program. It helps you keep track of your pairs and pairing history, the work you have in progress, standup notes, and action items. It can recommend pairs each day based on who has context on what and how recently people have paired with one another.
