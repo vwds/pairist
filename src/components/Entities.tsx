@@ -2,7 +2,7 @@ import { css } from 'astroturf';
 import { DragEvent } from 'react';
 import { Lock, Plus } from 'react-feather';
 import PersonActions from '../actions/person';
-import * as trackActions from '../actions/track';
+import TrackActions from '../actions/track';
 import { useModal } from '../hooks/useModal';
 import { usePeople } from '../hooks/usePeople';
 import { useRoles } from '../hooks/useRoles';
@@ -66,7 +66,7 @@ export default function Entities(props: Props) {
       }
 
       case 'track': {
-        trackActions.moveTrackToLane(teamId, entityId, '');
+        TrackActions.moveTrackToLane(teamId, entityId, '');
         break;
       }
     }

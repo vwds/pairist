@@ -4,7 +4,7 @@ import {
   adaptCurrentDataForRecommendationEngine,
   adaptHistoryDataForRecommendationEngine,
 } from '../lib/adapter';
-import * as trackActions from './track';
+import TrackActions from './track';
 import PersonActions from './person';
 import LaneActions from './lane';
 import RoleActions from './role';
@@ -38,7 +38,7 @@ export function getRecommendations(teamId: string, current: TeamPlacements, hist
 
     for (const entityId of entities) {
       if (current.tracks.hasOwnProperty(entityId)) {
-        trackActions.moveTrackToLane(teamId, entityId, laneId);
+        TrackActions.moveTrackToLane(teamId, entityId, laneId);
       } else if (current.roles.hasOwnProperty(entityId)) {
         RoleActions.moveRoleToLane(teamId, entityId, laneId);
       } else if (current.people.hasOwnProperty(entityId)) {

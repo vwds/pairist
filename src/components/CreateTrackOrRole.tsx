@@ -2,7 +2,6 @@ import { css } from 'astroturf';
 import { FormEvent, useState } from 'react';
 import { Shuffle } from 'react-feather';
 import { useParams } from 'react-router';
-import * as trackActions from '../actions/track';
 import { colors } from '../colors';
 import { emojiList } from '../emojis';
 import { useModal } from '../hooks/useModal';
@@ -18,6 +17,7 @@ import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import TrackChip from './TrackChip';
 import RoleActions from '../actions/role';
+import TrackActions from '../actions/track';
 
 interface Props {
   flavor: 'track' | 'role';
@@ -47,7 +47,7 @@ export default function CreateTrackOrRole(props: Props) {
 
   async function deleteTrackOrRole() {
     if (props.flavor === 'track') {
-      await trackActions.deleteTrack(teamId, props.entityId || '');
+      await TrackActions.deleteTrack(teamId, props.entityId || '');
     } else {
       await RoleActions.deleteRole(teamId, props.entityId || '');
     }
@@ -75,9 +75,9 @@ export default function CreateTrackOrRole(props: Props) {
     try {
       if (props.flavor === 'track') {
         if (props.mode === 'create') {
-          await trackActions.createTrack(teamId, { name, color, emoji });
+          await TrackActions.createTrack(teamId, { name, color, emoji });
         } else {
-          await trackActions.updateTrack(teamId, props.entityId || '', { name, color, emoji });
+          await TrackActions.updateTrack(teamId, props.entityId || '', { name, color, emoji });
         }
       } else {
         if (props.mode === 'create') {

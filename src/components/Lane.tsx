@@ -4,7 +4,7 @@ import { Lock, Unlock } from 'react-feather';
 import { Icon } from '@iconify/react';
 import broomIcon from '@iconify-icons/la/broom'
 import PersonActions from '../actions/person';
-import * as trackActions from '../actions/track';
+import TrackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RoleData, TrackData } from '../types';
 import IconButton from './IconButton';
@@ -36,7 +36,7 @@ export default function Lane(props: Props) {
 
   async function clearLane() {
     for (const track of tracks) {
-      trackActions.moveTrackToLane(teamId, track.trackId, '');
+      TrackActions.moveTrackToLane(teamId, track.trackId, '');
     }
 
     for (const role of roles) {
@@ -74,12 +74,12 @@ export default function Lane(props: Props) {
       }
 
       case 'role': {
-        roleActions.moveRoleToLane(teamId, entityId, laneId);
+        RoleActions.moveRoleToLane(teamId, entityId, laneId);
         break;
       }
 
       case 'track': {
-        trackActions.moveTrackToLane(teamId, entityId, laneId);
+        TrackActions.moveTrackToLane(teamId, entityId, laneId);
         break;
       }
     }

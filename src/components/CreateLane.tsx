@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import LaneActions from '../actions/lane';
 import PersonActions from '../actions/person';
 import RoleActions from '../actions/role';
-import * as trackActions from '../actions/track';
+import TrackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
 
@@ -47,7 +47,7 @@ export default function CreateLane(props: Props) {
       }
 
       case 'track': {
-        trackActions.moveTrackToLane(teamId, entityId, laneId);
+        TrackActions.moveTrackToLane(teamId, entityId, laneId);
         break;
       }
     }
