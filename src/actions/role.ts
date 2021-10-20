@@ -38,7 +38,7 @@ async function deleteRole(teamId: string, roleId: string) {
   await teamsRef.doc(teamId).collection('roles').doc(roleId).delete();
 }
 
-const FirebaseRoleActions = (): RoleActions => ({
+const FirebaseRoleActions: RoleActions = ({
   createRole,
   updateRole,
   moveRoleToLane,

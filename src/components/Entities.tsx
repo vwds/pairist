@@ -13,9 +13,7 @@ import CreateTrackOrRole from './CreateTrackOrRole';
 import IconButton from './IconButton';
 import TrackChip from './TrackChip';
 import TheBench from './TheBench';
-import FirebaseRoleActions from '../actions/role';
-
-const roleActions = FirebaseRoleActions()
+import RoleActions from '../actions/role';
 
 interface Props {
   teamId: string;
@@ -63,7 +61,7 @@ export default function Entities(props: Props) {
       }
 
       case 'role': {
-        roleActions.moveRoleToLane(teamId, entityId, '');
+        RoleActions.moveRoleToLane(teamId, entityId, '');
         break;
       }
 

@@ -3,12 +3,10 @@ import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import LaneActions from '../actions/lane';
 import PersonActions from '../actions/person';
-import FirebaseRoleActions from '../actions/role';
+import RoleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
-
-const roleActions = FirebaseRoleActions()
 
 interface Props {}
 
@@ -44,7 +42,7 @@ export default function CreateLane(props: Props) {
       }
 
       case 'role': {
-        roleActions.moveRoleToLane(teamId, entityId, laneId);
+        RoleActions.moveRoleToLane(teamId, entityId, laneId);
         break;
       }
 

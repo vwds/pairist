@@ -11,9 +11,7 @@ import IconButton from './IconButton';
 import Person from './Person';
 import TrackChip from './TrackChip';
 import LaneActions from '../actions/lane';
-import FirebaseRoleActions from '../actions/role';
-
-const roleActions = FirebaseRoleActions()
+import RoleActions from '../actions/role';
 
 interface Props {
   teamId: string;
@@ -42,7 +40,7 @@ export default function Lane(props: Props) {
     }
 
     for (const role of roles) {
-      roleActions.moveRoleToLane(teamId, role.roleId, '');
+      RoleActions.moveRoleToLane(teamId, role.roleId, '');
     }
 
     for (const person of people) {

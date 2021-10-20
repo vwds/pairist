@@ -17,9 +17,7 @@ import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import TrackChip from './TrackChip';
-import FirebaseRoleActions from '../actions/role';
-
-const roleActions = FirebaseRoleActions()
+import RoleActions from '../actions/role';
 
 interface Props {
   flavor: 'track' | 'role';
@@ -51,7 +49,7 @@ export default function CreateTrackOrRole(props: Props) {
     if (props.flavor === 'track') {
       await trackActions.deleteTrack(teamId, props.entityId || '');
     } else {
-      await roleActions.deleteRole(teamId, props.entityId || '');
+      await RoleActions.deleteRole(teamId, props.entityId || '');
     }
 
     setModalContent(null);
@@ -83,9 +81,9 @@ export default function CreateTrackOrRole(props: Props) {
         }
       } else {
         if (props.mode === 'create') {
-          await roleActions.createRole(teamId, { name, color, emoji });
+          await RoleActions.createRole(teamId, { name, color, emoji });
         } else {
-          await roleActions.updateRole(teamId, props.entityId || '', { name, color, emoji });
+          await RoleActions.updateRole(teamId, props.entityId || '', { name, color, emoji });
         }
       }
 

@@ -7,9 +7,8 @@ import {
 import * as trackActions from './track';
 import PersonActions from './person';
 import LaneActions from './lane';
-import FirebaseRoleActions from './role';
+import RoleActions from './role';
 
-const roleActions = FirebaseRoleActions()
 
 export function getRecommendations(teamId: string, current: TeamPlacements, history: TeamHistory) {
   const adaptedCurrent = adaptCurrentDataForRecommendationEngine(current);
@@ -41,7 +40,7 @@ export function getRecommendations(teamId: string, current: TeamPlacements, hist
       if (current.tracks.hasOwnProperty(entityId)) {
         trackActions.moveTrackToLane(teamId, entityId, laneId);
       } else if (current.roles.hasOwnProperty(entityId)) {
-        roleActions.moveRoleToLane(teamId, entityId, laneId);
+        RoleActions.moveRoleToLane(teamId, entityId, laneId);
       } else if (current.people.hasOwnProperty(entityId)) {
         current.people[entityId].laneId = laneId;
         PersonActions.movePersonToLane(teamId, entityId, laneId);
@@ -61,7 +60,7 @@ export function getRecommendations(teamId: string, current: TeamPlacements, hist
       let laneId: string = lane;
       for (const entityId of entities) {
         if (current.roles.hasOwnProperty(entityId)) {
-          roleActions.moveRoleToLane(teamId, entityId, laneId);
+          RoleActions.moveRoleToLane(teamId, entityId, laneId);
         }
       }
     })
