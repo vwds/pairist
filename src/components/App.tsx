@@ -14,7 +14,7 @@ import SignIn from './SignIn';
 import Team from './Team';
 import Notification from './Notification';
 import NewUser from './NewUser';
-import { db, auth } from '../firebase';
+import { AuthActions } from '../actions/firebase';
 
 export default function App() {
   const [modalContent] = useModal();
@@ -23,7 +23,7 @@ export default function App() {
   const { theme } = useAdditionalUserInfo(userId);
 
   const notLoggedIn = loaded && !userId;
-  const unverified = Boolean(auth.currentUser && !auth.currentUser.emailVerified);
+  const unverified = AuthActions.unverified()
 
   useEffect(() => {
     // When a new user signs in for the first time, there will be a brief
@@ -32,15 +32,7 @@ export default function App() {
     // userRefresh collection. Here, we subscribe to changes there so we can refresh
     // the token when the user's email is verified.
     if (userId) {
-      const unsubscribe = db
-        .collection('userRefresh')
-        .doc(userId)
-        .onSnapshot(async () => {
-          await auth.currentUser?.reload();
-          auth.currentUser?.getIdToken(true);
-        });
-
-      return unsubscribe;
+      return () => AuthActions.unsubscribe(userId);
     }
   }, [userId]);
 

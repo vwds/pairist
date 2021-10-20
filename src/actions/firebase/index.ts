@@ -1,3 +1,4 @@
+import FirebaseAuthActions from "./auth";
 import FirebaseLaneActions from "./lane";
 import FirebaseListActions from "./list";
 import FirebaseListItemActions from "./list-item";
@@ -8,6 +9,7 @@ import FirebaseTrackActions from "./track";
 import FirebaseUserActions from "./user";
 
 export {
+    FirebaseAuthActions as AuthActions,
     FirebaseLaneActions as LaneActions,
     FirebaseListItemActions as ListItemActions,
     FirebaseListActions as ListActions,

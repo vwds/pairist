@@ -1,10 +1,9 @@
 import { FC, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router';
-import { TeamActions } from '../actions/firebase';
+import { TeamActions, AuthActions } from '../actions/firebase';
 import { validateTeamSettings } from '../helpers';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
-import { auth } from '../firebase';
 import Button from './Button';
 import FormField from './FormField';
 import Input from './Input';
@@ -21,7 +20,7 @@ export const CreateTeam: FC = () => {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const unverified = Boolean(auth.currentUser && !auth.currentUser.emailVerified);
+  const unverified = AuthActions.unverified()
   console.log(unverified);
   const canSubmit = Boolean(loaded && !error && !submitting);
 
