@@ -3,11 +3,11 @@ import { cn } from '../helpers';
 import IconButton from './IconButton';
 import ConfirmDelete from './ConfirmDelete';
 import { Lock, Trash, Unlock } from 'react-feather';
-import * as personActions from '../actions/person';
 import * as teamActions from '../actions/team';
 import { useModal } from '../hooks/useModal';
 import { useAdditionalUserInfo } from '../hooks/useAdditionalUserInfo';
 import { DragEvent } from 'react';
+import PersonActions from '../actions/person';
 
 interface Props {
   userId: string;
@@ -28,9 +28,9 @@ export default function Person(props: Props) {
 
   function toggleLocked() {
     if (isLocked) {
-      personActions.unlockPerson(teamId, userId);
+      PersonActions.unlockPerson(teamId, userId);
     } else {
-      personActions.lockPerson(teamId, userId);
+      PersonActions.lockPerson(teamId, userId);
     }
   }
 

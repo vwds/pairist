@@ -3,7 +3,7 @@ import { DragEvent, useState } from 'react';
 import { Lock, Unlock } from 'react-feather';
 import { Icon } from '@iconify/react';
 import broomIcon from '@iconify-icons/la/broom'
-import * as personActions from '../actions/person';
+import PersonActions from '../actions/person';
 import * as trackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RoleData, TrackData } from '../types';
@@ -47,7 +47,7 @@ export default function Lane(props: Props) {
     }
 
     for (const person of people) {
-      personActions.movePersonToLane(teamId, person.userId, '');
+      PersonActions.movePersonToLane(teamId, person.userId, '');
     }
 
     laneActions.deleteLane(teamId, laneId);
@@ -72,7 +72,7 @@ export default function Lane(props: Props) {
 
     switch (entityType) {
       case 'person': {
-        personActions.movePersonToLane(teamId, entityId, laneId);
+        PersonActions.movePersonToLane(teamId, entityId, laneId);
         break;
       }
 

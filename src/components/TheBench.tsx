@@ -3,7 +3,7 @@ import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { usePeople } from '../hooks/usePeople';
 import { useTeamMembers } from '../hooks/useTeamMembers';
-import * as personActions from '../actions/person';
+import PersonActions from '../actions/person';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
 import Person from './Person';
@@ -54,8 +54,8 @@ export default function TheBench(props: Props) {
     switch (entityType) {
       case 'person': {
         lockedZone
-          ? personActions.lockPerson(teamId, entityId)
-          : personActions.unlockPerson(teamId, entityId);
+          ? PersonActions.lockPerson(teamId, entityId)
+          : PersonActions.unlockPerson(teamId, entityId);
         break;
       }
     }

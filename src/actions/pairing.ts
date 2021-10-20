@@ -5,7 +5,7 @@ import {
   adaptHistoryDataForRecommendationEngine,
 } from '../lib/adapter';
 import * as trackActions from './track';
-import * as personActions from './person';
+import PersonActions from './person';
 import FirebaseLaneActions from './lane';
 import FirebaseRoleActions from './role';
 
@@ -45,7 +45,7 @@ export function getRecommendations(teamId: string, current: TeamPlacements, hist
         roleActions.moveRoleToLane(teamId, entityId, laneId);
       } else if (current.people.hasOwnProperty(entityId)) {
         current.people[entityId].laneId = laneId;
-        personActions.movePersonToLane(teamId, entityId, laneId);
+        PersonActions.movePersonToLane(teamId, entityId, laneId);
       }
     }
   })).then(() => {

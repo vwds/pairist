@@ -2,7 +2,7 @@ import { css } from 'astroturf';
 import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FirebaseLaneActions from '../actions/lane';
-import * as personActions from '../actions/person';
+import PersonActions from '../actions/person';
 import FirebaseRoleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { cn } from '../helpers';
@@ -40,7 +40,7 @@ export default function CreateLane(props: Props) {
 
     switch (entityType) {
       case 'person': {
-        personActions.movePersonToLane(teamId, entityId, laneId);
+        PersonActions.movePersonToLane(teamId, entityId, laneId);
         break;
       }
 

@@ -1,8 +1,9 @@
 import { db } from '../firebase';
+import PersonActions from '../ports/person-actions';
 
 const teamsRef = db.collection('teams');
 
-export async function movePersonToLane(teamId: string, userId: string, laneId: string) {
+async function movePersonToLane(teamId: string, userId: string, laneId: string) {
   const newSettings: {
     laneId: string;
     isLocked?: boolean;
@@ -20,7 +21,7 @@ export async function movePersonToLane(teamId: string, userId: string, laneId: s
   await teamsRef.doc(teamId).collection('people').doc(userId).set(newSettings, { merge: true });
 }
 
-export async function lockPerson(teamId: string, userId: string) {
+async function lockPerson(teamId: string, userId: string): Promise<void> {
   await teamsRef.doc(teamId).collection('people').doc(userId).set(
     {
       isLocked: true,
@@ -30,7 +31,7 @@ export async function lockPerson(teamId: string, userId: string) {
   );
 }
 
-export async function unlockPerson(teamId: string, userId: string) {
+async function unlockPerson(teamId: string, userId: string): Promise<void> {
   await teamsRef.doc(teamId).collection('people').doc(userId).set(
     {
       isLocked: false,
@@ -38,3 +39,11 @@ export async function unlockPerson(teamId: string, userId: string) {
     { merge: true }
   );
 }
+
+const FirebasePersonActions: PersonActions = ({
+  movePersonToLane,
+  lockPerson,
+  unlockPerson
+})
+
+export default FirebasePersonActions

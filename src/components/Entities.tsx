@@ -1,7 +1,7 @@
 import { css } from 'astroturf';
 import { DragEvent } from 'react';
 import { Lock, Plus } from 'react-feather';
-import * as personActions from '../actions/person';
+import PersonActions from '../actions/person';
 import * as trackActions from '../actions/track';
 import { useModal } from '../hooks/useModal';
 import { usePeople } from '../hooks/usePeople';
@@ -58,7 +58,7 @@ export default function Entities(props: Props) {
 
     switch (entityType) {
       case 'person': {
-        personActions.movePersonToLane(teamId, entityId, '');
+        PersonActions.movePersonToLane(teamId, entityId, '');
         break;
       }
 
