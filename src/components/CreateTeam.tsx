@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router';
-import TeamActions from '../actions/team';
+import { TeamActions } from '../actions/firebase';
 import { validateTeamSettings } from '../helpers';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
@@ -61,7 +61,7 @@ export const CreateTeam: FC = () => {
     <ModalBody>
       <p>
         Unverified users cannot create new teams. We've sent you an email to verify your account.
-        <br/><br/>
+        <br /><br />
         <b>Note: it may be in your spam folder.</b>
       </p>
     </ModalBody>
@@ -95,7 +95,7 @@ export const CreateTeam: FC = () => {
     <form onSubmit={save}>
       <ModalHeader text="Create team" />
 
-      { modalBody }
+      {modalBody}
 
       <ModalFooter error={error}>
         <Button disabled={submitting} onClick={cancel}>

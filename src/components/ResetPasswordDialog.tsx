@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import UserActions from '../actions/user';
+import { UserActions } from '../actions/firebase';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
 import Button from './Button';

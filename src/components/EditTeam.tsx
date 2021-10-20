@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import TeamActions from '../actions/team';
+import {TeamActions} from '../actions/firebase';
 import { validateTeamSettings } from '../helpers';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';

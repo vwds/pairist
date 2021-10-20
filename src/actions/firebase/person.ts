@@ -1,5 +1,5 @@
-import { db } from '../firebase';
-import PersonActions from '../ports/person-actions';
+import { db } from '../../firebase';
+import { PersonActions } from '../../ports';
 
 const teamsRef = db.collection('teams');
 

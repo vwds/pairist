@@ -1,6 +1,6 @@
 import { css } from 'astroturf';
 import { FormEvent, useEffect, useState } from 'react';
-import UserActions from '../actions/user';
+import {UserActions} from '../actions/firebase';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
 import { useAdditionalUserInfo } from '../hooks/useAdditionalUserInfo';

@@ -1,5 +1,5 @@
-import { auth, funcs, db } from '../firebase';
-import UserActions from '../ports/user-actions';
+import { auth, db, funcs } from '../../firebase';
+import { UserActions } from '../../ports';
 
 const updateUserProfileFunc = funcs.httpsCallable('updateUserProfile');
 

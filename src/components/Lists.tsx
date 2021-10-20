@@ -2,7 +2,7 @@ import { css } from 'astroturf';
 import { ReactNode, useRef } from 'react';
 import { Plus } from 'react-feather';
 import { useParams } from 'react-router';
-import ListActions from '../actions/list';
+import {ListActions} from '../actions/firebase';
 import { useLists } from '../hooks/useLists';
 import { RouteParams } from '../types';
 import IconButton from './IconButton';

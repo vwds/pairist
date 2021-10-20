@@ -3,7 +3,7 @@ import { memo, useState } from 'react';
 import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 import { CheckSquare, Move, Smile, Square, Trash } from 'react-feather';
 import { useParams } from 'react-router';
-import ListItemActions from '../actions/list-item';
+import { ListItemActions } from '../actions/firebase';
 import { RouteParams } from '../types';
 import { emojis } from '../emojis';
 import Editable from './Editable';
@@ -48,9 +48,9 @@ export default memo(function ListItem(props: Props) {
           newCount < 1
             ? fieldValue.delete()
             : {
-                timestamp: previous.timestamp || Date.now(),
-                count: newCount,
-              },
+              timestamp: previous.timestamp || Date.now(),
+              count: newCount,
+            },
       },
     });
   }
@@ -84,7 +84,7 @@ export default memo(function ListItem(props: Props) {
 
       <IconButton
         label={`Mark item as ${props.checked ? 'not done' : 'done'}`}
-        icon={props.checked ? <CheckSquare/> : <Square/>}
+        icon={props.checked ? <CheckSquare /> : <Square />}
         onClick={toggleItemChecked}
       />
 

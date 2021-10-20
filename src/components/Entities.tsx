@@ -1,8 +1,7 @@
 import { css } from 'astroturf';
 import { DragEvent } from 'react';
 import { Lock, Plus } from 'react-feather';
-import PersonActions from '../actions/person';
-import TrackActions from '../actions/track';
+import { PersonActions, TrackActions, RoleActions } from '../actions/firebase';
 import { useModal } from '../hooks/useModal';
 import { usePeople } from '../hooks/usePeople';
 import { useRoles } from '../hooks/useRoles';
@@ -13,14 +12,13 @@ import CreateTrackOrRole from './CreateTrackOrRole';
 import IconButton from './IconButton';
 import TrackChip from './TrackChip';
 import TheBench from './TheBench';
-import RoleActions from '../actions/role';
 
 interface Props {
   teamId: string;
 }
 
 export default function Entities(props: Props) {
-  let lockedMembers:string[] = [], unlockedMembers:string[] = [];
+  let lockedMembers: string[] = [], unlockedMembers: string[] = [];
   const { teamId } = props;
   const [, setModalContent] = useModal();
   const members = useTeamMembers();

@@ -4,11 +4,7 @@ import {
   adaptCurrentDataForRecommendationEngine,
   adaptHistoryDataForRecommendationEngine,
 } from '../lib/adapter';
-import TrackActions from './track';
-import PersonActions from './person';
-import LaneActions from './lane';
-import RoleActions from './role';
-
+import { TrackActions, PersonActions, LaneActions, RoleActions } from './firebase';
 
 export function getRecommendations(teamId: string, current: TeamPlacements, history: TeamHistory) {
   const adaptedCurrent = adaptCurrentDataForRecommendationEngine(current);

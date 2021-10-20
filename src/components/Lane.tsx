@@ -3,15 +3,12 @@ import { DragEvent, useState } from 'react';
 import { Lock, Unlock } from 'react-feather';
 import { Icon } from '@iconify/react';
 import broomIcon from '@iconify-icons/la/broom'
-import PersonActions from '../actions/person';
-import TrackActions from '../actions/track';
+import { PersonActions, TrackActions, LaneActions, RoleActions } from '../actions/firebase';
 import { cn } from '../helpers';
 import { RoleData, TrackData } from '../types';
 import IconButton from './IconButton';
 import Person from './Person';
 import TrackChip from './TrackChip';
-import LaneActions from '../actions/lane';
-import RoleActions from '../actions/role';
 
 interface Props {
   teamId: string;

@@ -1,6 +1,6 @@
-import { db, fieldValue } from '../firebase';
-import RoleActions from '../ports/role-actions';
-import { RoleData } from '../types';
+import { db, fieldValue } from '../../firebase';
+import { RoleActions } from '../../ports';
+import { RoleData } from '../../types';
 
 const teamsRef = db.collection('teams');
 

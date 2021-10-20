@@ -1,14 +1,11 @@
 import { css } from 'astroturf';
 import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import LaneActions from '../actions/lane';
-import PersonActions from '../actions/person';
-import RoleActions from '../actions/role';
-import TrackActions from '../actions/track';
+import { LaneActions, PersonActions, RoleActions, TrackActions } from '../actions/firebase';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
 
-interface Props {}
+interface Props { }
 
 export default function CreateLane(props: Props) {
   const { teamId = '-' } = useParams<RouteParams>();

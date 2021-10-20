@@ -1,6 +1,6 @@
-import { db, fieldValue } from '../firebase';
-import ListItemActions from '../ports/list-item-actions';
-import { ListItemData } from '../types';
+import { db, fieldValue } from '../../firebase';
+import { ListItemActions } from '../../ports';
+import { ListItemData } from '../../types';
 
 const teamsRef = db.collection('teams');
 

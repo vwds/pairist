@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import TeamActions from '../actions/team';
+import { TeamActions } from '../actions/firebase';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
 import { useTeamSettings } from '../hooks/useTeamSettings';

@@ -1,6 +1,6 @@
-import { db, fieldValue } from '../firebase';
-import TrackActions from '../ports/track-actions';
-import { TrackData } from '../types';
+import { db, fieldValue } from '../../firebase';
+import { TrackActions } from '../../ports';
+import { TrackData } from '../../types';
 
 const teamsRef = db.collection('teams');
 

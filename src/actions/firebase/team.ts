@@ -1,6 +1,6 @@
-import { auth, db, funcs } from '../firebase';
-import TeamActions from '../ports/team-actions';
-import { TeamData } from '../types';
+import { auth, db, funcs } from '../../firebase';
+import { TeamActions } from '../../ports';
+import { TeamData } from '../../types';
 
 const teamsRef = db.collection('teams');
 const createTeamFunc = funcs.httpsCallable('createTeam');

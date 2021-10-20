@@ -3,7 +3,7 @@ import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { usePeople } from '../hooks/usePeople';
 import { useTeamMembers } from '../hooks/useTeamMembers';
-import PersonActions from '../actions/person';
+import { PersonActions } from '../actions/firebase';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
 import Person from './Person';

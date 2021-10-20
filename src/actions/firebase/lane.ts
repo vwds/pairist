@@ -1,5 +1,5 @@
-import { db, fieldValue } from '../firebase';
-import { LaneActions } from '../ports';
+import { db, fieldValue } from '../../firebase';
+import { LaneActions } from '../../ports';
 
 const teamsRef = db.collection('teams');
 

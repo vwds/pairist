@@ -16,8 +16,7 @@ import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import TrackChip from './TrackChip';
-import RoleActions from '../actions/role';
-import TrackActions from '../actions/track';
+import {RoleActions, TrackActions} from '../actions/firebase';
 
 interface Props {
   flavor: 'track' | 'role';

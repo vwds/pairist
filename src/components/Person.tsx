@@ -1,13 +1,12 @@
 import { css } from 'astroturf';
-import { cn } from '../helpers';
-import IconButton from './IconButton';
-import ConfirmDelete from './ConfirmDelete';
-import { Lock, Trash, Unlock } from 'react-feather';
-import TeamActions from '../actions/team';
-import { useModal } from '../hooks/useModal';
-import { useAdditionalUserInfo } from '../hooks/useAdditionalUserInfo';
 import { DragEvent } from 'react';
-import PersonActions from '../actions/person';
+import { Lock, Trash, Unlock } from 'react-feather';
+import { PersonActions, TeamActions } from '../actions/firebase';
+import { cn } from '../helpers';
+import { useAdditionalUserInfo } from '../hooks/useAdditionalUserInfo';
+import { useModal } from '../hooks/useModal';
+import ConfirmDelete from './ConfirmDelete';
+import IconButton from './IconButton';
 
 interface Props {
   userId: string;
