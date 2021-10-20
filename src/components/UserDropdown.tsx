@@ -1,6 +1,6 @@
 import { ChevronDown, Lock, LogOut, User } from 'react-feather';
 import { useHistory } from 'react-router-dom';
-import * as userActions from '../actions/user';
+import UserActions from '../actions/user';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
 import { useAdditionalUserInfo } from '../hooks/useAdditionalUserInfo';
@@ -29,7 +29,7 @@ export default function UserDropdown() {
   const imageHash = identiconString ? identiconString : session.userId || '';
 
   async function logOut() {
-    await userActions.logOut();
+    await UserActions.logOut();
     history.push('/');
   }
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import * as userActions from '../actions/user';
+import UserActions from '../actions/user';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
 import Button from './Button';
@@ -22,13 +22,13 @@ export default function ResetPasswordDialog() {
   }
 
   async function logOut() {
-    await userActions.logOut();
+    await UserActions.logOut();
     history.push('/');
   }
 
   function onSubmit() {
     setSubmitting(true);
-    userActions.resetPassword(email || emailInput || '');
+    UserActions.resetPassword(email || emailInput || '');
     logOut();
   }
 

@@ -1,6 +1,6 @@
 import { css } from 'astroturf';
 import { FormEvent, useEffect, useState } from 'react';
-import * as userActions from '../actions/user';
+import UserActions from '../actions/user';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
 import { useAdditionalUserInfo } from '../hooks/useAdditionalUserInfo';
@@ -42,7 +42,7 @@ export default function EditProfile() {
     setSubmitting(true);
 
     try {
-      await userActions.updateProfile({
+      await UserActions.updateProfile({
         displayName: localDisplayName,
         photoURL: localPhotoURL,
       }, {

@@ -1,6 +1,6 @@
 import { css } from 'astroturf';
 import { FormEvent, useState } from 'react';
-import * as userActions from '../actions/user';
+import UserActions from '../actions/user';
 import { allowedEmailDomains } from '../config';
 import { useModal } from '../hooks/useModal';
 import ResetPasswordDialog from './ResetPasswordDialog';
@@ -42,7 +42,7 @@ export default function SignIn(props: Props) {
     evt.preventDefault();
 
     try {
-      await userActions.logIn(logInEmail, logInPassword);
+      await UserActions.logIn(logInEmail, logInPassword);
     } catch (err) {
       if (err.code === 'auth/user-not-found') {
         setLogInError('No user found with this email. Did you mean to sign up?');
@@ -57,7 +57,7 @@ export default function SignIn(props: Props) {
     try {
       checkEmailDomain(signUpEmail, validDomains);
 
-      await userActions.signUp(signUpEmail, signUpDisplayName, signUpPassword);
+      await UserActions.signUp(signUpEmail, signUpDisplayName, signUpPassword);
     } catch (err) {
       setSignUpError(err.message);
     }
