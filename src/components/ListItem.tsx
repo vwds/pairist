@@ -3,7 +3,7 @@ import { memo, useState } from 'react';
 import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 import { CheckSquare, Move, Smile, Square, Trash } from 'react-feather';
 import { useParams } from 'react-router';
-import * as listItemActions from '../actions/list-item';
+import ListItemActions from '../actions/list-item';
 import { RouteParams } from '../types';
 import { emojis } from '../emojis';
 import Editable from './Editable';
@@ -26,13 +26,13 @@ export default memo(function ListItem(props: Props) {
   const [emojisExpanded, setEmojisExpanded] = useState(false);
 
   function toggleItemChecked() {
-    listItemActions.updateListItem(teamId, props.listId, props.itemId, {
+    ListItemActions.updateListItem(teamId, props.listId, props.itemId, {
       checked: !props.checked,
     });
   }
 
   function updateItemText(newText: string) {
-    listItemActions.updateListItem(teamId, props.listId, props.itemId, {
+    ListItemActions.updateListItem(teamId, props.listId, props.itemId, {
       text: newText,
     });
   }
@@ -41,7 +41,7 @@ export default memo(function ListItem(props: Props) {
     const previous = (props.reactions as any)[emojiName] || {};
     const newCount = (previous.count || 0) + incrementBy;
 
-    listItemActions.updateListItem(teamId, props.listId, props.itemId, {
+    ListItemActions.updateListItem(teamId, props.listId, props.itemId, {
       reactions: {
         ...props.reactions,
         [emojiName]:

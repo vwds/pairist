@@ -4,7 +4,7 @@ import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautif
 import { ArrowDown, ArrowUp, Trash2 } from 'react-feather';
 import { useParams } from 'react-router';
 import ListActions from '../actions/list';
-import * as listItemActions from '../actions/list-item';
+import ListItemActions from '../actions/list-item';
 import { db } from '../firebase';
 import { cn } from '../helpers';
 import { ListItemData, useListItems } from '../hooks/useListItems';
@@ -77,7 +77,7 @@ export default function List(props: Props) {
     const text = newItemText;
     setNewItemText('');
 
-    await listItemActions.createListItem(teamId, props.listId, {
+    await ListItemActions.createListItem(teamId, props.listId, {
       text,
       order: Date.now(),
     });
@@ -92,7 +92,7 @@ export default function List(props: Props) {
 
   const deleteItem = useCallback(
     (itemId: string) => {
-      listItemActions.deleteListItem(teamId, props.listId, itemId);
+      ListItemActions.deleteListItem(teamId, props.listId, itemId);
     },
     [teamId, props.listId]
   );

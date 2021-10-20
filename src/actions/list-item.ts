@@ -1,9 +1,10 @@
 import { db, fieldValue } from '../firebase';
+import ListItemActions from '../ports/list-item-actions';
 import { ListItemData } from '../types';
 
 const teamsRef = db.collection('teams');
 
-export async function createListItem(teamId: string, listId: string, item: Partial<ListItemData>) {
+async function createListItem(teamId: string, listId: string, item: Partial<ListItemData>): Promise<void> {
   await teamsRef.doc(teamId).collection('lists').doc(listId).collection('items').add({
     created: fieldValue.serverTimestamp(),
     text: item.text,
@@ -12,12 +13,12 @@ export async function createListItem(teamId: string, listId: string, item: Parti
   });
 }
 
-export async function updateListItem(
+async function updateListItem(
   teamId: string,
   listId: string,
   itemId: string,
   newValues: Partial<ListItemData>
-) {
+): Promise<void> {
   await teamsRef
     .doc(teamId)
     .collection('lists')
@@ -29,7 +30,7 @@ export async function updateListItem(
     });
 }
 
-export async function deleteListItem(teamId: string, listId: string, itemId: string) {
+async function deleteListItem(teamId: string, listId: string, itemId: string): Promise<void> {
   await teamsRef
     .doc(teamId)
     .collection('lists')
@@ -38,3 +39,11 @@ export async function deleteListItem(teamId: string, listId: string, itemId: str
     .doc(itemId)
     .delete();
 }
+
+const FirebaseListItemActions: ListItemActions = ({
+  createListItem,
+  updateListItem,
+  deleteListItem
+})
+
+export default FirebaseListItemActions
