@@ -1,12 +1,14 @@
 import { css } from 'astroturf';
 import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as laneActions from '../actions/lane';
+import FirebaseLaneActions from '../actions/lane';
 import * as personActions from '../actions/person';
 import * as roleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
+
+const laneActions = FirebaseLaneActions()
 
 interface Props {}
 

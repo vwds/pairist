@@ -1,8 +1,9 @@
 import { db, fieldValue } from '../firebase';
+import { LaneActions } from '../ports';
 
 const teamsRef = db.collection('teams');
 
-export async function createLane(teamId: string) {
+async function createLane(teamId: string): Promise<string> {
   const doc = await teamsRef.doc(teamId).collection('lanes').add({
     created: fieldValue.serverTimestamp(),
     isLocked: false,
@@ -11,18 +12,27 @@ export async function createLane(teamId: string) {
   return doc.id;
 }
 
-export async function lockLane(teamId: string, laneId: string) {
+async function lockLane(teamId: string, laneId: string) {
   await teamsRef.doc(teamId).collection('lanes').doc(laneId).update({
     isLocked: true,
   });
 }
 
-export async function unlockLane(teamId: string, laneId: string) {
+async function unlockLane(teamId: string, laneId: string) {
   await teamsRef.doc(teamId).collection('lanes').doc(laneId).update({
     isLocked: false,
   });
 }
 
-export async function deleteLane(teamId: string, laneId: string) {
+async function deleteLane(teamId: string, laneId: string) {
   await teamsRef.doc(teamId).collection('lanes').doc(laneId).delete();
 }
+
+const FirebaseLaneActions = (): LaneActions => ({
+  createLane,
+  lockLane,
+  unlockLane,
+  deleteLane
+})
+
+export default FirebaseLaneActions
