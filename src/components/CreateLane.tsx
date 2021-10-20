@@ -1,14 +1,13 @@
 import { css } from 'astroturf';
 import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import FirebaseLaneActions from '../actions/lane';
+import LaneActions from '../actions/lane';
 import PersonActions from '../actions/person';
 import FirebaseRoleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
 
-const laneActions = FirebaseLaneActions()
 const roleActions = FirebaseRoleActions()
 
 interface Props {}
@@ -36,7 +35,7 @@ export default function CreateLane(props: Props) {
     const entityId = evt.dataTransfer.getData('entityId');
     if (!entityType || !entityId) return;
 
-    const laneId = await laneActions.createLane(teamId);
+    const laneId = await LaneActions.createLane(teamId);
 
     switch (entityType) {
       case 'person': {

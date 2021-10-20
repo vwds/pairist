@@ -6,10 +6,9 @@ import {
 } from '../lib/adapter';
 import * as trackActions from './track';
 import PersonActions from './person';
-import FirebaseLaneActions from './lane';
+import LaneActions from './lane';
 import FirebaseRoleActions from './role';
 
-const laneActions = FirebaseLaneActions()
 const roleActions = FirebaseRoleActions()
 
 export function getRecommendations(teamId: string, current: TeamPlacements, history: TeamHistory) {
@@ -34,7 +33,7 @@ export function getRecommendations(teamId: string, current: TeamPlacements, hist
 
     let laneId: string = lane;
     if (lane === 'new-lane') {
-      laneId = await laneActions.createLane(teamId);
+      laneId = await LaneActions.createLane(teamId);
       current.lanes[laneId] = { isLocked: false };
     }
 

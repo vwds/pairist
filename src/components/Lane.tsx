@@ -10,10 +10,9 @@ import { RoleData, TrackData } from '../types';
 import IconButton from './IconButton';
 import Person from './Person';
 import TrackChip from './TrackChip';
-import FirebaseLaneActions from '../actions/lane';
+import LaneActions from '../actions/lane';
 import FirebaseRoleActions from '../actions/role';
 
-const laneActions = FirebaseLaneActions()
 const roleActions = FirebaseRoleActions()
 
 interface Props {
@@ -31,9 +30,9 @@ export default function Lane(props: Props) {
 
   function toggleLock() {
     if (isLocked) {
-      laneActions.unlockLane(teamId, laneId);
+      LaneActions.unlockLane(teamId, laneId);
     } else {
-      laneActions.lockLane(teamId, laneId);
+      LaneActions.lockLane(teamId, laneId);
     }
   }
 
@@ -50,7 +49,7 @@ export default function Lane(props: Props) {
       PersonActions.movePersonToLane(teamId, person.userId, '');
     }
 
-    laneActions.deleteLane(teamId, laneId);
+    LaneActions.deleteLane(teamId, laneId);
   }
 
   function onDragOver(evt: DragEvent<HTMLDivElement>) {

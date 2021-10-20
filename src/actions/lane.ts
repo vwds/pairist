@@ -28,7 +28,7 @@ async function deleteLane(teamId: string, laneId: string) {
   await teamsRef.doc(teamId).collection('lanes').doc(laneId).delete();
 }
 
-const FirebaseLaneActions = (): LaneActions => ({
+const FirebaseLaneActions: LaneActions = ({
   createLane,
   lockLane,
   unlockLane,
