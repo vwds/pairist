@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import * as teamActions from '../actions/team';
+import TeamActions from '../actions/team';
 import { validateTeamSettings } from '../helpers';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
@@ -36,7 +36,7 @@ export default function EditTeam(props: Props) {
       return;
     }
 
-    await teamActions.updateTeam({
+    await TeamActions.updateTeam({
       teamId: props.teamId,
       teamName,
     });

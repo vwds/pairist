@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as teamActions from '../actions/team';
+import TeamActions from '../actions/team';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
 import { useTeamSettings } from '../hooks/useTeamSettings';
@@ -31,7 +31,7 @@ export default function AddTeamMember() {
     evt && evt.preventDefault();
 
     try {
-      await teamActions.addTeamMember(teamId, teamSettings.teamName, newMemberEmail);
+      await TeamActions.addTeamMember(teamId, teamSettings.teamName, newMemberEmail);
       setModalContent(null);
     } catch (err) {
       console.error(err);

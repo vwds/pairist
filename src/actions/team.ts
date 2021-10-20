@@ -1,4 +1,5 @@
 import { auth, db, funcs } from '../firebase';
+import TeamActions from '../ports/team-actions';
 import { TeamData } from '../types';
 
 const teamsRef = db.collection('teams');
@@ -6,7 +7,7 @@ const createTeamFunc = funcs.httpsCallable('createTeam');
 const addTeamMemberFunc = funcs.httpsCallable('addTeamMember');
 const removeTeamMemberFunc = funcs.httpsCallable('removeTeamMember');
 
-export async function createTeam(team: Partial<TeamData>) {
+async function createTeam(team: Partial<TeamData>): Promise<void> {
   const { teamId, teamName } = team;
 
   if (!teamId) return;
@@ -21,7 +22,7 @@ export async function createTeam(team: Partial<TeamData>) {
   });
 }
 
-export async function updateTeam(newValues: Partial<TeamData>) {
+async function updateTeam(newValues: Partial<TeamData>): Promise<void> {
   const opts: Partial<TeamData> = {};
 
   if (newValues.hasOwnProperty('teamName')) opts.teamName = newValues.teamName;
@@ -34,7 +35,7 @@ export async function updateTeam(newValues: Partial<TeamData>) {
   );
 }
 
-export async function addTeamMember(teamId: string, teamName: string, memberEmail: string) {
+async function addTeamMember(teamId: string, teamName: string, memberEmail: string): Promise<void> {
   await addTeamMemberFunc({
     teamId,
     teamName,
@@ -42,9 +43,18 @@ export async function addTeamMember(teamId: string, teamName: string, memberEmai
   });
 }
 
-export async function removeTeamMember(teamId: string, userId: string) {
+async function removeTeamMember(teamId: string, userId: string): Promise<void> {
   await removeTeamMemberFunc({
     teamId,
     userId,
   });
 }
+
+const FirebaseTeamActions: TeamActions = ({
+  createTeam,
+  updateTeam,
+  addTeamMember,
+  removeTeamMember
+})
+
+export default FirebaseTeamActions

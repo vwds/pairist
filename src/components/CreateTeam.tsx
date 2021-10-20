@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router';
-import * as teamActions from '../actions/team';
+import TeamActions from '../actions/team';
 import { validateTeamSettings } from '../helpers';
 import { useModal } from '../hooks/useModal';
 import { useSession } from '../hooks/useSession';
@@ -42,7 +42,7 @@ export const CreateTeam: FC = () => {
     }
 
     try {
-      await teamActions.createTeam({
+      await TeamActions.createTeam({
         teamId: teamURL,
         teamName,
       });

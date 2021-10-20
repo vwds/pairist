@@ -3,7 +3,7 @@ import { cn } from '../helpers';
 import IconButton from './IconButton';
 import ConfirmDelete from './ConfirmDelete';
 import { Lock, Trash, Unlock } from 'react-feather';
-import * as teamActions from '../actions/team';
+import TeamActions from '../actions/team';
 import { useModal } from '../hooks/useModal';
 import { useAdditionalUserInfo } from '../hooks/useAdditionalUserInfo';
 import { DragEvent } from 'react';
@@ -39,7 +39,7 @@ export default function Person(props: Props) {
       <ConfirmDelete
         action={`remove ${displayName || 'this user'} from this team`}
         deletingText="Removing..."
-        onConfirm={() => teamActions.removeTeamMember(teamId, userId)}
+        onConfirm={() => TeamActions.removeTeamMember(teamId, userId)}
       />
     );
   }
