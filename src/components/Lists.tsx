@@ -2,7 +2,7 @@ import { css } from 'astroturf';
 import { ReactNode, useRef } from 'react';
 import { Plus } from 'react-feather';
 import { useParams } from 'react-router';
-import * as listActions from '../actions/list';
+import ListActions from '../actions/list';
 import { useLists } from '../hooks/useLists';
 import { RouteParams } from '../types';
 import IconButton from './IconButton';
@@ -14,7 +14,7 @@ export default function Lists() {
   const listsRef = useRef<HTMLUListElement>(null);
 
   async function createList() {
-    await listActions.createList(teamId, {
+    await ListActions.createList(teamId, {
       order: Date.now(),
     });
 
@@ -35,7 +35,7 @@ export default function Lists() {
     const swappedList = lists[movedIndex + 1];
     const swappedListOrder = swappedList.order;
 
-    listActions.reorderLists(teamId, [
+    ListActions.reorderLists(teamId, [
       { ...movedList, order: swappedListOrder },
       { ...swappedList, order: movedListOrder },
     ]);
@@ -49,7 +49,7 @@ export default function Lists() {
     const swappedList = lists[movedIndex - 1];
     const swappedListOrder = swappedList.order;
 
-    listActions.reorderLists(teamId, [
+    ListActions.reorderLists(teamId, [
       { ...movedList, order: swappedListOrder },
       { ...swappedList, order: movedListOrder },
     ]);

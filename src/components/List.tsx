@@ -3,7 +3,7 @@ import { FC, FormEvent, memo, useCallback, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import { ArrowDown, ArrowUp, Trash2 } from 'react-feather';
 import { useParams } from 'react-router';
-import * as listActions from '../actions/list';
+import ListActions from '../actions/list';
 import * as listItemActions from '../actions/list-item';
 import { db } from '../firebase';
 import { cn } from '../helpers';
@@ -67,7 +67,7 @@ export default function List(props: Props) {
     setModalContent(
       <ConfirmDelete
         action={`delete list ${props.title}`}
-        onConfirm={() => listActions.deleteList(teamId, props.listId)}
+        onConfirm={() => ListActions.deleteList(teamId, props.listId)}
       />
     );
   }
@@ -84,7 +84,7 @@ export default function List(props: Props) {
   }
 
   function updateList(newTitle: string) {
-    listActions.updateList(teamId, {
+    ListActions.updateList(teamId, {
       listId: props.listId,
       title: newTitle,
     });

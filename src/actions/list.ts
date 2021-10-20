@@ -1,9 +1,10 @@
 import { db, fieldValue } from '../firebase';
+import ListActions from '../ports/list-actions';
 import { ListData } from '../types';
 
 const teamsRef = db.collection('teams');
 
-export async function createList(teamId: string, list: Partial<ListData>) {
+async function createList(teamId: string, list: Partial<ListData>): Promise<void> {
   await teamsRef
     .doc(teamId)
     .collection('lists')
@@ -14,7 +15,7 @@ export async function createList(teamId: string, list: Partial<ListData>) {
     });
 }
 
-export async function updateList(teamId: string, list: Partial<ListData>) {
+async function updateList(teamId: string, list: Partial<ListData>): Promise<void> {
   await teamsRef
     .doc(teamId)
     .collection('lists')
@@ -24,11 +25,11 @@ export async function updateList(teamId: string, list: Partial<ListData>) {
     });
 }
 
-export async function deleteList(teamId: string, listId: string) {
+async function deleteList(teamId: string, listId: string): Promise<void> {
   await teamsRef.doc(teamId).collection('lists').doc(listId).delete();
 }
 
-export async function reorderLists(teamId: string, listsWithNewOrders: ListData[]) {
+async function reorderLists(teamId: string, listsWithNewOrders: ListData[]): Promise<void> {
   const batch = db.batch();
 
   for (const list of listsWithNewOrders) {
@@ -41,3 +42,12 @@ export async function reorderLists(teamId: string, listsWithNewOrders: ListData[
 
   await batch.commit();
 }
+
+const FirebaseListActions: ListActions = ({
+  createList,
+  updateList,
+  deleteList,
+  reorderLists
+})
+
+export default FirebaseListActions
