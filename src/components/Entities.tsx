@@ -2,7 +2,6 @@ import { css } from 'astroturf';
 import { DragEvent } from 'react';
 import { Lock, Plus } from 'react-feather';
 import * as personActions from '../actions/person';
-import * as roleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { useModal } from '../hooks/useModal';
 import { usePeople } from '../hooks/usePeople';
@@ -14,6 +13,9 @@ import CreateTrackOrRole from './CreateTrackOrRole';
 import IconButton from './IconButton';
 import TrackChip from './TrackChip';
 import TheBench from './TheBench';
+import FirebaseRoleActions from '../actions/role';
+
+const roleActions = FirebaseRoleActions()
 
 interface Props {
   teamId: string;

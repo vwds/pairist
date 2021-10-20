@@ -1,9 +1,10 @@
 import { db, fieldValue } from '../firebase';
+import RoleActions from '../ports/role-actions';
 import { RoleData } from '../types';
 
 const teamsRef = db.collection('teams');
 
-export async function createRole(teamId: string, role: Partial<RoleData>) {
+async function createRole(teamId: string, role: Partial<RoleData>) {
   await teamsRef.doc(teamId).collection('roles').add({
     created: fieldValue.serverTimestamp(),
     name: role.name,
@@ -13,7 +14,7 @@ export async function createRole(teamId: string, role: Partial<RoleData>) {
   });
 }
 
-export async function updateRole(teamId: string, roleId: string, role: Partial<RoleData>) {
+async function updateRole(teamId: string, roleId: string, role: Partial<RoleData>) {
   await teamsRef.doc(teamId).collection('roles').doc(roleId).set(
     {
       name: role.name,
@@ -24,7 +25,7 @@ export async function updateRole(teamId: string, roleId: string, role: Partial<R
   );
 }
 
-export async function moveRoleToLane(teamId: string, roleId: string, laneId: string) {
+async function moveRoleToLane(teamId: string, roleId: string, laneId: string) {
   await teamsRef.doc(teamId).collection('roles').doc(roleId).set(
     {
       laneId,
@@ -33,6 +34,15 @@ export async function moveRoleToLane(teamId: string, roleId: string, laneId: str
   );
 }
 
-export async function deleteRole(teamId: string, roleId: string) {
+async function deleteRole(teamId: string, roleId: string) {
   await teamsRef.doc(teamId).collection('roles').doc(roleId).delete();
 }
+
+const FirebaseRoleActions = (): RoleActions => ({
+  createRole,
+  updateRole,
+  moveRoleToLane,
+  deleteRole
+})
+
+export default FirebaseRoleActions

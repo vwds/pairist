@@ -2,7 +2,6 @@ import { css } from 'astroturf';
 import { FormEvent, useState } from 'react';
 import { Shuffle } from 'react-feather';
 import { useParams } from 'react-router';
-import * as roleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { colors } from '../colors';
 import { emojiList } from '../emojis';
@@ -18,6 +17,9 @@ import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import TrackChip from './TrackChip';
+import FirebaseRoleActions from '../actions/role';
+
+const roleActions = FirebaseRoleActions()
 
 interface Props {
   flavor: 'track' | 'role';

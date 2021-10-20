@@ -4,7 +4,6 @@ import { Lock, Unlock } from 'react-feather';
 import { Icon } from '@iconify/react';
 import broomIcon from '@iconify-icons/la/broom'
 import * as personActions from '../actions/person';
-import * as roleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RoleData, TrackData } from '../types';
@@ -12,8 +11,10 @@ import IconButton from './IconButton';
 import Person from './Person';
 import TrackChip from './TrackChip';
 import FirebaseLaneActions from '../actions/lane';
+import FirebaseRoleActions from '../actions/role';
 
 const laneActions = FirebaseLaneActions()
+const roleActions = FirebaseRoleActions()
 
 interface Props {
   teamId: string;

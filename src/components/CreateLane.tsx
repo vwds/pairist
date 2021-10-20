@@ -3,12 +3,13 @@ import { DragEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FirebaseLaneActions from '../actions/lane';
 import * as personActions from '../actions/person';
-import * as roleActions from '../actions/role';
+import FirebaseRoleActions from '../actions/role';
 import * as trackActions from '../actions/track';
 import { cn } from '../helpers';
 import { RouteParams } from '../types';
 
 const laneActions = FirebaseLaneActions()
+const roleActions = FirebaseRoleActions()
 
 interface Props {}
 
