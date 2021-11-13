@@ -1,9 +1,7 @@
-import firebase from 'firebase/app';
-
 export interface JdenticonConfigMap {
   [themeName: string]: {
     replaceMode: string;
-    lightness: {grayscale: [number, number]}
+    lightness: { grayscale: [number, number] }
   }
 };
 
@@ -37,7 +35,8 @@ export interface ListItemData {
   checked: boolean;
   order: number;
   reactions: {
-    [name: string]: { count: number; timestamp: number } | firebase.firestore.FieldValue;
+    // [name: string]: { count: number; timestamp: number } | firebase.firestore.FieldValue; // Possibly removing the dependency from firestore on the types
+    [name: string]: { count: number; timestamp: number }
   };
 }
 
@@ -94,4 +93,11 @@ export interface TeamPlacements {
 
 export interface TeamHistory {
   [timestamp: string]: TeamPlacements;
+}
+
+export interface User {
+  uid: string | null | undefined
+  email: string | null | undefined
+  displayName: string | null | undefined
+  photoUrl: string | null | undefined
 }

@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react';
-import { auth } from '../firebase';
+import { AuthActions } from '../actions/firebase';
 
 export const useSession = () => {
-  const currentUser = auth.currentUser;
+  const currentUser = AuthActions.fetchUser();
 
   const [loaded, setLoaded] = useState(false);
   const [userId, setUserId] = useState(currentUser?.uid || '');
   const [email, setEmail] = useState(currentUser?.email || '');
   const [displayName, setDisplayName] = useState(currentUser?.displayName || '');
-  const [photoURL, setPhotoURL] = useState(currentUser?.photoURL || '');
+  const [photoURL, setPhotoURL] = useState(currentUser?.photoUrl || '');
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+
+    const unsubscribe = AuthActions.onAuthStateChanged((user) => {
       setLoaded(true);
 
       if (user) {
         setDisplayName(user.displayName || '');
-        setUserId(user.uid);
-        setPhotoURL(user.photoURL || '');
+        setUserId(user.uid || '');
+        setPhotoURL(user.photoUrl || '');
         return;
       }
 
