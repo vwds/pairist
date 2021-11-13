@@ -1,6 +1,6 @@
 import { css } from 'astroturf';
 import { FormEvent, useState } from 'react';
-import UserActions from '../actions/user';
+import { UserActions } from '../actions/firebase';
 import { allowedEmailDomains } from '../config';
 import { useModal } from '../hooks/useModal';
 import ResetPasswordDialog from './ResetPasswordDialog';
@@ -8,7 +8,7 @@ import Button from './Button';
 import FormField from './FormField';
 import Input from './Input';
 
-interface Props {}
+interface Props { }
 
 function checkEmailDomain(givenEmail: string, allowedDomains: string[]) {
   if (!allowedDomains.length) return;

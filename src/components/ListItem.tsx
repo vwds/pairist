@@ -44,13 +44,10 @@ export default memo(function ListItem(props: Props) {
     ListItemActions.updateListItem(teamId, props.listId, props.itemId, {
       reactions: {
         ...props.reactions,
-        [emojiName]:
-          newCount < 1
-            ? fieldValue.delete()
-            : {
-              timestamp: previous.timestamp || Date.now(),
-              count: newCount,
-            },
+        [emojiName]: {
+          timestamp: previous.timestamp || Date.now(),
+          count: newCount,
+        }
       },
     });
   }
