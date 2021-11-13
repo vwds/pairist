@@ -28,11 +28,17 @@ async function deleteLane(teamId: string, laneId: string) {
   await teamsRef.doc(teamId).collection('lanes').doc(laneId).delete();
 }
 
+async function getAllLanes(teamId: string) {
+  await teamsRef.doc(teamId).collection('lanes').orderBy('created', 'asc')
+  return [];
+}
+
 const FirebaseLaneActions: LaneActions = ({
   createLane,
   lockLane,
   unlockLane,
-  deleteLane
+  deleteLane,
+  getAllLanes
 })
 
 export default FirebaseLaneActions
