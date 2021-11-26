@@ -18,4 +18,4 @@ app.get('/current/:teamId', currentPairsEndpoint);
 app.get('/lists/:teamId', listsEndpoint);
 app.get('/history/:teamId', historyEndpoint);
 
-export const api = functions.https.onRequest(app);
+export const api = functions.region('europe-west2').https.onRequest(app);

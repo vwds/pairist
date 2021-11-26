@@ -12,7 +12,7 @@ const db = admin.firestore();
  * Specifically, when a team's name is changed, we need to go into memberTeams and
  * update the team names there.
  */
-export const updateTeamSettings = functions.firestore
+export const updateTeamSettings = functions.region('europe-west2').firestore
   .document('/teams/{teamId}')
   .onUpdate(async (change, context) => {
     const { teamId } = context.params;

@@ -11,7 +11,7 @@ const auth = admin.auth();
  * valid) updates teamMembers to mark that this team has a new member and updates memberTeams
  * to mark that this user is now a member of a new team.
  */
-export const addTeamMember = functions.https.onCall(async (data, context) => {
+export const addTeamMember = functions.region('europe-west2').https.onCall(async (data, context) => {
   ensureAuthenticated(context);
 
   const { uid } = context.auth!;

@@ -3,7 +3,7 @@ import * as functions from 'firebase-functions';
 
 const db = admin.firestore();
 
-export const onUserDelete = functions.auth.user().onDelete(async (user) => {
+export const onUserDelete = functions.region('europe-west2').auth.user().onDelete(async (user) => {
   const userId = user.uid;
 
   console.log(`Handling deletion of user ${userId}`);

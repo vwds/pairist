@@ -20,7 +20,7 @@ const client = new firestore.v1.FirestoreAdminClient();
 const bucket = functions.config().pairist.backup_bucket_name;
 
 if (bucket) {
-  exports.scheduledFirestoreExport = functions.pubsub
+  exports.scheduledFirestoreExport = functions.region('europe-west2').pubsub
     .schedule('every 24 hours')
     .onRun((context: any) => {
 

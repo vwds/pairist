@@ -17,4 +17,4 @@ export const auth = app.auth();
 
 export const fieldValue = firebase.firestore.FieldValue;
 
-export const funcs = app.functions();
+export const funcs = app.functions('europe-west2')

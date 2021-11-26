@@ -5,7 +5,7 @@ import { ensureAuthenticated } from './helpers';
 const db = admin.firestore();
 const auth = admin.auth();
 
-export const updateUserProfile = functions.https.onCall(async (data, context) => {
+export const updateUserProfile = functions.region('europe-west2').https.onCall(async (data, context) => {
   ensureAuthenticated(context);
 
   const { uid } = context.auth!;

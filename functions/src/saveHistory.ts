@@ -9,7 +9,7 @@ const cronSchedule = pairist.history_cron_schedule || 'every mon,tue,wed,thu,fri
 const timezone = pairist.history_cron_timezone || 'America/Los_Angeles';
 const entriesToKeep = parseInt(pairist.history_entries_to_keep) || 20;
 
-export const saveHistory = functions.pubsub
+export const saveHistory = functions.region('europe-west2').pubsub
   .schedule(cronSchedule)
   .timeZone(timezone)
   .onRun(async () => {

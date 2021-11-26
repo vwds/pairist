@@ -4,7 +4,7 @@ import { ensureAuthenticated } from './helpers';
 
 const db = admin.firestore();
 
-export const removeTeamMember = functions.https.onCall(async (data, context) => {
+export const removeTeamMember = functions.region('europe-west2').https.onCall(async (data, context) => {
   ensureAuthenticated(context);
 
   const { uid } = context.auth!;

@@ -8,7 +8,7 @@ const allowedEmailDomains = functions.config().pairist.allowed_email_domains
 const auth = admin.auth();
 const db = admin.firestore();
 
-export const verifyNewUser = functions.auth.user().onCreate(async (user) => {
+export const verifyNewUser = functions.region('europe-west2').auth.user().onCreate(async (user) => {
   const email = user.email || '';
 
   console.log(`Verifying new user with id ${user.uid}`);
