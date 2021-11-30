@@ -26,7 +26,10 @@
     "react-firebase-hooks": "^2.1.1",
     "react-markdown": "^5.0.3",
     "react-router-dom": "^5.1.2",
-    "remark-gfm": "^1.0.0"
+    "remark-gfm": "^1.0.0",
+    "@aws-amplify/auth": "4.3.16",
+    "@aws-amplify/datastore": "3.7.0",
+    "@aws-amplify/core": "4.3.8"
   },
   "devDependencies": {
     "@craco/craco": "^5.6.2",

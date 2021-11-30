@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "Pairist",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authPairist",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

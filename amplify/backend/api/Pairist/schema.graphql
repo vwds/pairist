@@ -1,0 +1,61 @@
+type ListItemReactions @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  count: Int!
+  timestamp: AWSTimestamp
+  listitemID: ID @index(name: "byListItem")
+}
+
+type ListItem @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  text: String!
+  checked: String!
+  order: Int!
+  reactions: [ListItemReactions] @hasMany(indexName: "byListItem", fields: ["id"])
+  listID: ID @index(name: "byList")
+}
+
+type List @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  order: Int
+  items: [ListItem] @hasMany(indexName: "byList", fields: ["id"])
+}
+
+type Person @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userUUID: ID
+  isLocked: Boolean!
+  teams: [Team] @manyToMany(relationName: "TeamPerson")
+}
+
+type Lane @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  isLocked: Boolean!
+  tracks: [Track] @hasMany(indexName: "byLane", fields: ["id"])
+  roles: [Role] @hasMany(indexName: "byLane", fields: ["id"])
+  teamID: ID @index(name: "byTeam")
+}
+
+type Role @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  color: String!
+  emoji: String!
+  laneID: ID @index(name: "byLane")
+}
+
+type Track @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nam: String!
+  color: String!
+  emoji: String!
+  laneID: ID @index(name: "byLane")
+}
+
+type Team @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  persons: [Person] @manyToMany(relationName: "TeamPerson")
+  lanes: [Lane] @hasMany(indexName: "byTeam", fields: ["id"])
+}

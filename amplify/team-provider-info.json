@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-pairist-staging-153351-authRole",
+      "UnauthRoleArn": "arn:aws:iam::448582180022:role/amplify-pairist-staging-153351-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::448582180022:role/amplify-pairist-staging-153351-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-pairist-staging-153351-deployment",
+      "UnauthRoleName": "amplify-pairist-staging-153351-unauthRole",
+      "StackName": "amplify-pairist-staging-153351",
+      "StackId": "arn:aws:cloudformation:eu-west-1:448582180022:stack/amplify-pairist-staging-153351/42167400-4ece-11ec-a1fd-0a11e7e171f3",
+      "AmplifyAppId": "duwl12wf8u9j3"
+    },
+    "categories": {
+      "auth": {
+        "Pairist": {}
+      }
+    }
+  }
+}
